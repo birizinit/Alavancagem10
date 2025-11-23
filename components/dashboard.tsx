@@ -126,7 +126,7 @@ export function Dashboard({ apiKey, onLogout }: DashboardProps) {
            stopLossPercent > 0
   }
 
-  const BOT_SYMBOLS = ["ADAUSDT", "XRPUSDT", "ETHUSDT", "BTCUSDT", "SOLUSDT", "VOL10.IDX"]
+  const BOT_SYMBOLS = ["ADAUSDT", "XRPUSDT", "ETHUSDT", "BTCUSDT", "SOLUSDT"]
   const CLOSE_TYPE = "01:00"
   const TRADE_INTERVAL = 60000
 

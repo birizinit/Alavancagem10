@@ -1266,7 +1266,7 @@ export function Dashboard({ apiKey, onLogout }: DashboardProps) {
           <AlertDialogFooter>
             <AlertDialogAction 
               onClick={() => setShowWelcomeDialog(false)}
-              className="gradient-gold hover:gradient-gold-hover text-black"
+              className="gradient-lime hover:gradient-lime-hover text-primary-foreground"
             >
               Entendi, vou configurar
             </AlertDialogAction>

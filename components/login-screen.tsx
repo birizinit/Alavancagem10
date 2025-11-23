@@ -81,7 +81,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-[#a2e514]/30 to-background"></div>
 
       <div className="absolute top-4 right-4 z-20">
         <Button

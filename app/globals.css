@@ -12,9 +12,9 @@
   --card-foreground: oklch(0 0 0); /* Pure black text on cards */
   --popover: oklch(0.98 0 0); /* White popover */
   --popover-foreground: oklch(0 0 0); /* Pure black text on popovers */
-  --primary: #000000; /* Silver primary */
+  --primary: #a2e514; /* Silver primary */
   --primary-foreground: oklch(0 0 0); /* Pure black text on silver */
-  --secondary: #000000; /* Lime green secondary */
+  --secondary: #a2e514; /* Lime green secondary */
   --secondary-foreground: oklch(0 0 0); /* Pure black text on gray */
   --muted: #191a16; /* Lime green muted */
   --muted-foreground: oklch(0 0 0); /* Pure black text instead of gray */

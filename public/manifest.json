@@ -1,0 +1,27 @@
+{
+  "name": "ALAVANCAGEM 10X APP",
+  "short_name": "ALAVANCAGEM 10X",
+  "description": "Opere automaticamente com a ALAVANCAGEM 10X AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/noxlogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/noxlogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["finance", "business", "productivity"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+}

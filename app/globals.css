@@ -1,0 +1,180 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Light mode - white and light gray eeeheme */
+  --background: oklch(0.98 0 0); /* Almost white backgrounsd */
+  /* Making all text truly black in light mode */
+  --foreground: oklch(0 0 0); /* Pure black text */
+  --card: oklch(0.95 0 0); /* Light gray cards */
+  --card-foreground: oklch(0 0 0); /* Pure black text on cards */
+  --popover: oklch(0.98 0 0); /* White popover */
+  --popover-foreground: oklch(0 0 0); /* Pure black text on popovers */
+  --primary: #000000; /* Silver primary */
+  --primary-foreground: oklch(0 0 0); /* Pure black text on silver */
+  --secondary: #000000; /* Lime green secondary */
+  --secondary-foreground: oklch(0 0 0); /* Pure black text on gray */
+  --muted: #191a16; /* Lime green muted */
+  --muted-foreground: oklch(0 0 0); /* Pure black text instead of gray */
+  --accent: #a2e514; /* Lime green accent */
+  --accent-foreground: oklch(0 0 0); /* Pure black text on gray */
+  --destructive: oklch(0.55 0.25 15); /* Red for losses */
+  --destructive-foreground: oklch(0.98 0 0); /* White text on red */
+  --border: rgb(162 229 20 / 0.3); /* Subtle borders */
+  --input: rgb(162 229 20 / 0.2); /* Light input background */
+  --ring: rgb(162 229 20 / 0.6); /* Lime focus ring */
+  --chart-1: #a2e514; /* Silver chart color */
+  --chart-2: #a2e514; /* Medium gray chart color */
+  --chart-3: oklch(0.65 0.25 15); /* Red chart color */
+  --chart-4: oklch(0.7 0.15 120); /* Green chart color */
+  --chart-5: oklch(0.6 0.2 45); /* Orange chart color */
+  --radius: 0.75rem; /* Rounded corners */
+  --sidebar: oklch(0.95 0 0);
+  --sidebar-foreground: oklch(0 0 0);
+  --sidebar-primary: #a2e514;
+  --sidebar-primary-foreground: oklch(0 0 0);
+  --sidebar-accent: #a2e514;
+  --sidebar-accent-foreground: oklch(0 0 0);
+  --sidebar-border: rgb(162 229 20 / 0.3);
+  --sidebar-ring: rgb(162 229 20 / 0.6);
+}
+
+.dark {
+  /* Dark mode - black and silver gray theme */
+  --background: oklch(0.05 0 0); /* Deep black background */
+  --foreground: #a2e514; /* Silver gray text */
+  --card: oklch(0.12 0 0); /* Dark gray cards */
+  --card-foreground: #a2e514; /* Silver gray text on cards */
+  --popover: oklch(0.08 0 0); /* Dark popover */
+  --popover-foreground: #a2e514; /* Silver gray text on popovers */
+  --primary: #a2e514; /* Silver primary */
+  --primary-foreground: oklch(0.05 0 0); /* Black text on silver */
+  --secondary: #a2e514; /* Medium gray secondary */
+  --secondary-foreground: oklch(0.05 0 0); /* Black text on gray */
+  --muted: #191a16; /* Muted gray */
+  --muted-foreground: oklch(0.55 0 0); /* Muted text */
+  --accent: #a2e514; /* Light gray accent */
+  --accent-foreground: oklch(0.05 0 0); /* Black text on gray */
+  --destructive: oklch(0.55 0.25 15); /* Red for losses */
+  --destructive-foreground: oklch(0.98 0 0); /* White text on red */
+  --border: rgb(162 229 20 / 0.3); /* Subtle borders */
+  --input: rgb(162 229 20 / 0.2); /* Dark input background */
+  --ring: rgb(162 229 20 / 0.6); /* Lime focus ring */
+  --chart-1: #a2e514; /* Silver chart color */
+  --chart-2: #a2e514; /* Medium gray chart color */
+  --chart-3: oklch(0.65 0.25 15); /* Red chart color */
+  --chart-4: oklch(0.7 0.15 120); /* Green chart color */
+  --chart-5: oklch(0.6 0.2 45); /* Orange chart color */
+  --sidebar: oklch(0.12 0 0);
+  --sidebar-foreground: #a2e514;
+  --sidebar-primary: #a2e514;
+  --sidebar-primary-foreground: oklch(0.05 0 0);
+  --sidebar-accent: #a2e514;
+  --sidebar-accent-foreground: oklch(0.05 0 0);
+  --sidebar-border: rgb(162 229 20 / 0.3);
+  --sidebar-ring: rgb(162 229 20 / 0.6);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Added custom animations and glassmorphism effects */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-lime {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(162 229 20 / 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgb(162 229 20 / 0);
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgb(162 229 20 / 0.15), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.pulse-lime {
+  animation: pulse-lime 2s infinite;
+}
+
+.glass {
+  backdrop-filter: blur(10px);
+  background: oklch(0.12 0 0 / 0.8);
+  border: 1px solid rgb(162 229 20 / 0.3);
+}
+
+.gradient-lime {
+  background: linear-gradient(135deg, #a2e514, #8dd011);
+}
+
+.gradient-lime-hover {
+  background: linear-gradient(135deg, #b4f028, #9ee516);
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, #D4AF37, #F4D03F);
+}
+
+.gradient-gold-hover {
+  background: linear-gradient(135deg, #F4D03F, #FFD700);
+}

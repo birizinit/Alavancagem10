@@ -21,9 +21,11 @@ import {
   PauseIcon,
   MoonIcon,
   SunIcon,
+  BarChart3Icon,
 } from "lucide-react"
 import { CryptoCard } from "@/components/crypto-card"
 import { TransactionHistory } from "@/components/transaction-history"
+import { AnalyticsPanel } from "@/components/analytics-panel"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -119,6 +121,7 @@ export function Dashboard({ apiKey, onLogout }: DashboardProps) {
   const [showWelcomeDialog, setShowWelcomeDialog] = useState(false)
   const [showStopDialog, setShowStopDialog] = useState(false)
   const [stopDialogMessage, setStopDialogMessage] = useState("")
+  const [showAnalytics, setShowAnalytics] = useState(false)
 
   const isBotConfigValid = () => {
     return baseTradeAmount > 0 && 
@@ -824,6 +827,15 @@ export function Dashboard({ apiKey, onLogout }: DashboardProps) {
               <Button
                 variant="ghost"
                 size="sm"
+                onClick={() => setShowAnalytics(true)}
+                className="text-muted-foreground hover:text-primary"
+                title="Analytics"
+              >
+                <BarChart3Icon className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={toggleTheme}
                 className="text-muted-foreground hover:text-primary"
                 title={theme === "dark" ? "Modo Claro" : "Modo Escuro"}
@@ -1294,6 +1306,8 @@ export function Dashboard({ apiKey, onLogout }: DashboardProps) {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <AnalyticsPanel isOpen={showAnalytics} onClose={() => setShowAnalytics(false)} />
     </div>
   )
 }

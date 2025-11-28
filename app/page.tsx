@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
+import { useAnalytics } from "@/hooks/use-analytics"
 
 // Lazy loading dos componentes pesados para melhorar o carregamento inicial
 const Dashboard = dynamic(() => import("@/components/dashboard").then(module => ({ default: module.Dashboard })), {
@@ -26,6 +27,9 @@ export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [apiKey, setApiKey] = useState<string | null>(null)
+
+  // Rastrear analytics automaticamente
+  useAnalytics("/")
 
   useEffect(() => {
     // Verificar se há uma sessão salva

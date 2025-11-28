@@ -26,20 +26,21 @@ Sistema de analytics interno para monitoramento de acessos à aplicação, **tot
 
 ### Como Acessar
 
-1. Faça login na aplicação normalmente
-2. No dashboard, clique no ícone de **gráfico** (📊) no canto superior direito
-3. Digite a senha de administrador
+1. Acesse diretamente a URL: **`/admin-status`**
+2. Digite as credenciais de administrador
 
-### Senha Padrão
+### Credenciais Padrão
 
 ```
-admin123
+Usuário: patrick_admin
+Senha: admin
 ```
 
-⚠️ **IMPORTANTE**: Altere a senha padrão editando o arquivo `/components/analytics-panel.tsx`:
+⚠️ **IMPORTANTE**: Altere as credenciais padrão editando o arquivo `/app/admin-status/page.tsx`:
 
 ```typescript
-const ADMIN_PASSWORD = "sua_nova_senha_aqui"
+const ADMIN_USER = "seu_novo_usuario"
+const ADMIN_PASSWORD = "sua_nova_senha"
 ```
 
 ## 💾 Armazenamento de Dados

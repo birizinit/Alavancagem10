@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { safeGetItem, safeSetItem } from "@/lib/storage"
 
 interface AnalyticsData {
   deviceId: string
@@ -39,12 +40,14 @@ function generateDeviceId(): string {
 // Obter ou criar ID do dispositivo
 function getDeviceId(): string {
   if (typeof window === "undefined") return ""
-  
-  let deviceId = localStorage.getItem(DEVICE_ID_KEY)
-  if (!deviceId) {
-    deviceId = generateDeviceId()
-    localStorage.setItem(DEVICE_ID_KEY, deviceId)
+
+  const storedId = safeGetItem("local", DEVICE_ID_KEY)
+  if (storedId) {
+    return storedId
   }
+
+  const deviceId = generateDeviceId()
+  safeSetItem("local", DEVICE_ID_KEY, deviceId)
   return deviceId
 }
 
@@ -60,7 +63,7 @@ function getAnalyticsData(): AnalyticsData {
   }
 
   try {
-    const stored = localStorage.getItem(STORAGE_KEY)
+    const stored = safeGetItem("local", STORAGE_KEY)
     if (stored) {
       const parsed = JSON.parse(stored)
       return {
@@ -89,7 +92,7 @@ function saveAnalyticsData(data: AnalyticsData): void {
       ...data,
       uniqueVisitors: Array.from(data.uniqueVisitors),
     }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave))
+    safeSetItem("local", STORAGE_KEY, JSON.stringify(toSave))
   } catch (error) {
     console.error("Erro ao salvar analytics:", error)
   }

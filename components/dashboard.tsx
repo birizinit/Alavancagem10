@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { safeGetItem, safeSetItem } from "@/lib/storage"
 import {
   ArrowUpIcon,
   ArrowDownIcon,
@@ -690,7 +691,7 @@ export function Dashboard({ apiKey, onLogout }: DashboardProps) {
     const newTheme = theme === "dark" ? "light" : "dark"
     setTheme(newTheme)
     document.documentElement.classList.toggle("dark", newTheme === "dark")
-    localStorage.setItem("theme", newTheme)
+    safeSetItem("local", "theme", newTheme)
   }
 
   useEffect(() => {
@@ -707,7 +708,7 @@ export function Dashboard({ apiKey, onLogout }: DashboardProps) {
   }, [])
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null
+    const savedTheme = safeGetItem("local", "theme") as "light" | "dark" | null
     if (savedTheme) {
       setTheme(savedTheme)
       document.documentElement.classList.toggle("dark", savedTheme === "dark")

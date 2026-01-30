@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { safeGetItem, safeSetItem } from "@/lib/storage"
 import { Eye, EyeOff, Play, Shield, Zap, TrendingUp, MoonIcon, SunIcon } from "lucide-react"
 
 interface LoginScreenProps {
@@ -27,11 +28,11 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
     const newTheme = theme === "dark" ? "light" : "dark"
     setTheme(newTheme)
     document.documentElement.classList.toggle("dark", newTheme === "dark")
-    localStorage.setItem("theme", newTheme)
+    safeSetItem("local", "theme", newTheme)
   }
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null
+    const savedTheme = safeGetItem("local", "theme") as "light" | "dark" | null
     if (savedTheme) {
       setTheme(savedTheme)
       document.documentElement.classList.toggle("dark", savedTheme === "dark")

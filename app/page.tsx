@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import { useAnalytics } from "@/hooks/use-analytics"
+import { safeGetItem, safeRemoveItem, safeSetItem } from "@/lib/storage"
 
 // Lazy loading dos componentes pesados para melhorar o carregamento inicial
 const Dashboard = dynamic(() => import("@/components/dashboard").then(module => ({ default: module.Dashboard })), {
@@ -33,8 +34,8 @@ export default function Home() {
 
   useEffect(() => {
     // Verificar se há uma sessão salva
-    const savedApiKey = sessionStorage.getItem("broker_api_key")
-    const rememberMe = localStorage.getItem("broker_remember_me")
+    const savedApiKey = safeGetItem("session", "broker_api_key")
+    const rememberMe = safeGetItem("local", "broker_remember_me")
 
     if (savedApiKey || rememberMe) {
       const keyToUse = savedApiKey || rememberMe
@@ -51,17 +52,17 @@ export default function Home() {
     setIsAuthenticated(true)
 
     // Armazenar a chave
-    sessionStorage.setItem("broker_api_key", key)
+    safeSetItem("session", "broker_api_key", key)
     if (remember) {
-      localStorage.setItem("broker_remember_me", key)
+      safeSetItem("local", "broker_remember_me", key)
     }
   }
 
   const handleLogout = () => {
     setIsAuthenticated(false)
     setApiKey(null)
-    sessionStorage.removeItem("broker_api_key")
-    localStorage.removeItem("broker_remember_me")
+    safeRemoveItem("session", "broker_api_key")
+    safeRemoveItem("local", "broker_remember_me")
   }
 
   if (isLoading) {
